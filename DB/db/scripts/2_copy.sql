@@ -1,0 +1,1 @@
+COPY respondents FROM '/data/data1.csv' DELIMITER ';' CSV HEADER;

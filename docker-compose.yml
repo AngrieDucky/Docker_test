@@ -1,0 +1,29 @@
+services:
+  app-python-local:
+    container_name: app-python-local
+    build: ../Python_Code
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "80:80/tcp"
+    working_dir: /usr/src/app
+    command: "python ./main.py"
+    depends_on:
+      - 'app-db-local'
+    volumes:
+      - 'Python_Code:/usr/src/app'
+
+  app-db-local:
+    container_name: app-db-local
+    build: ../DB
+    restart: unless-stopped
+    ports:
+      - "5432:5432/tcp"
+    expose:
+      - "5432/tcp"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=postgres
+    volumes:
+      - 'DB/data:/var/lib/postgresql/data'
