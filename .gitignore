@@ -3,3 +3,5 @@
 /.venv
 /.vscode
 /Compose_local
+/Python_Code/__pycache__
+/DB/data
