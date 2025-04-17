@@ -11,7 +11,7 @@ services:
     depends_on:
       - 'app-db-local'
     volumes:
-      - 'Python_Code:/usr/src/app'
+      - './Python_Code:/usr/src/app'
 
   app-db-local:
     container_name: app-db-local
